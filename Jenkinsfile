@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Deploying....'
-		    sh '/usr/share/maven/bin/mvn clean test' {
+		    sh '/usr/share/maven/bin/mvn test' {
 		    deploy adapters: [tomcat9(credentialsId: 'github', path: '', url: 'http://54.236.49.125:8080/')], contextPath: null, war: '**/*.war'
 		}
             }
