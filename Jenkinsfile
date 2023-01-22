@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-		deploy adapters: [tomcat10(credentialsId: 'github-git', path: '', url: 'http://100.26.11.88:8080/')], contextPath: null, war: '**/*.war'
+		deploy adapters: [tomcat9(credentialsId: 'github-git', path: '', url: 'http://100.26.11.88:8080/')], contextPath: null, war: '**/*.war'
             }
         }
     }
