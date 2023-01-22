@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
 		    sshagent(['tomcat']) {
-    sh "scp -o /var/lib/jenkins/workspace/Web-calculator/target/webapp-0.2.war ubuntu@ec2-54-85-17-111:/home/ubuntu/apache-tomcat-10.1.5-M1/webapps"
+    sh "scp -o /var/lib/jenkins/workspace/Web-calculator/target/webapp-0.2.war ubuntu@ec2-54-85-17-111:/usr/share/apache-tomcat/webapps"
 		}
 
             }
