@@ -25,9 +25,9 @@ pipeline {
             steps {
                 echo 'Deploying....'
 		    sshagent(['tomcat']) {
-    scp -o /var/lib/jenkins/workspace/Web-calculator/target/webapp-0.2.war ubuntu@ec2-54-85-17-111
-}
-		deploy adapters: [tomcat9(credentialsId: 'github-git', path: '', url: 'http://100.26.11.88:8080/')], contextPath: null, war: '**/*.war'
+    sh "scp -o /var/lib/jenkins/workspace/Web-calculator/target/webapp-0.2.war ubuntu@ec2-54-85-17-111:/home/ubuntu/apache-tomcat-10.1.5-M1/webapps"
+		}
+
             }
         }
     }
