@@ -8,18 +8,23 @@ pipeline {
 		sh '/usr/share/maven/bin/mvn clean validate'
             }
         }
+	    
         stage('Build') {
             steps {
-                echo 'Testing..'
+                echo 'Building..'
 		sh '/usr/share/maven/bin/mvn clean package'
             }
         }
         stage('Test') {
             steps {
+                echo 'Testing..'
+		sh '/usr/share/maven/bin/mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
                 echo 'Deploying....'
-		    sh '/usr/share/maven/bin/mvn test' {
-		    deploy adapters: [tomcat9(credentialsId: 'github', path: '', url: 'http://54.236.49.125:8080/')], contextPath: null, war: '**/*.war'
-		}
+		deploy adapters: [tomcat9(credentialsId: 'github-git', path: '', url: 'http://100.26.11.88:8080/')], contextPath: null, war: '**/*.war'
             }
         }
     }
