@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Deploying....'
 		    sshagent(['tomcat']) {
-    sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Web-calculator/target/webapp-0.2.war ubuntu@ip-172.31.11.12:/home/ubuntu/apache-tomcat-10.0.20/webapps"
+    sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Web-calculator/target/webapp-0.2.war ubuntu@172.31.11.12:/home/ubuntu/apache-tomcat-10.0.20/webapps"
 		}
 
             }
